@@ -19,4 +19,12 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('api/',include('profiles.api.urls')),
+    # path('api-auth/', include('rest_framework.urls')), # api için login, register
 ]
+
+from django.conf import settings # ADDED
+from django.conf.urls.static import static # ADDED
+if settings.DEBUG == True:
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    
